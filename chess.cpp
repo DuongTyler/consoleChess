@@ -10,7 +10,7 @@ string board [8][8]; //= {{'0','0','0','0','0','0','0','0'},{'0','0','0','0','0'
 
 enum pieceNames
 {
-	EMPTY = '0',
+	EMPTY = ' ',
 	KING='K',
 	QUEEN='Q',
 	BISHOP='B',
@@ -108,7 +108,7 @@ void setup()
 	{
 		for(int o = 0; o < 8; o++)
 		{
-			board[o][v] = '0';
+			board[o][v] = ' ';
 		}
 	}
 	//    OOS
@@ -139,6 +139,7 @@ int main()
 	move(KING,E,1,E,2);
 	move(QUEEN,D,1,D,8);
 	updateBoard();
+	while (true){
 	cout<<"Make a Move\n"<<endl;
 	int xCoord, yCoord, xCoord2, yCoord2;
 	cin>>xCoord;
@@ -158,7 +159,7 @@ int main()
 	move(KING,xCoord,yCoord,xCoord2, yCoord2);
 	//{
 	updateBoard();
-
+	}
 	///cout<<king.getId()<<endl;
 	return 0;
 }
