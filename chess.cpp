@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
-//#include <time.h>
 #include "piece.h"
 using namespace std;
 string board [8][8]; //= {{'0','0','0','0','0','0','0','0'},{'0','0','0','0','0','0','0','0'}};
@@ -123,15 +122,6 @@ int main()
 {
 
 	setup();
-	//updateBoard();
-
-	//Test Pieces
-	/*
-	piece king('K',0,0,0);
-	piece queen('Q',1,1,2);
-	cout<<king.getType()<<"\n"<<queen.getPos(0)<<"\n"<<king.getSide()<<endl;
-	*/
-	//piece king(1,0,0,1,1);
 	move(KING,E,1,E,1);
 	move(QUEEN,D,1,D,1);
 	updateBoard();
@@ -140,25 +130,139 @@ int main()
 	move(QUEEN,D,1,D,8);
 	updateBoard();
 	while (true){
-	cout<<"Make a Move\n"<<endl;
-	int xCoord, yCoord, xCoord2, yCoord2;
-	cin>>xCoord;
-	cin>>yCoord;
-	cin>>xCoord2;
-	cin>>yCoord2;
-	//while()
-	//{
-	//	string mov;
-	//	getline(cin, mov);
-	//	char xCoord = mov[0];
-	//	if(xCoord == 'E')
-	//	{
-	//		xCoord = 5;
-	//	}
-	//	int yCoord = int(mov[1]);
-	move(KING,xCoord,yCoord,xCoord2, yCoord2);
-	//{
-	updateBoard();
+		cout<<"Make a Move\n"<<endl;
+		string movTo;
+		getline(cin, movTo);
+		int xCoord, yCoord, xCoord2, yCoord2;
+		switch(movTo[0])
+		{
+			case 'A':
+				xCoord = 1;
+				break;
+			case 'B':
+				xCoord = 2;
+				break;
+			case 'C':
+				xCoord = 3;
+				break;
+			case 'D':
+				xCoord = 4;
+				break;
+			case 'E':
+				xCoord = 5;
+				break;
+			case 'F':
+				xCoord = 6;
+				break;
+			case 'G':
+				xCoord = 7;
+				break;
+			case 'H':
+				xCoord = 8;
+				break;
+		}
+
+		switch(movTo[1])
+		{
+			case 'A':
+				yCoord = 1;
+				break;
+			case 'B':
+				yCoord = 2;
+				break;
+			case 'C':
+				yCoord = 3;
+				break;
+			case 'D':
+				yCoord = 4;
+				break;
+			case 'E':
+				yCoord = 5;
+				break;
+			case 'F':
+				yCoord = 6;
+				break;
+			case 'G':
+				yCoord = 7;
+				break;
+			case 'H':
+				yCoord = 8;
+				break;
+		}
+		
+		switch(movTo[3])
+		{
+			case 'A':
+				xCoord2 = 1;
+				break;
+			case 'B':
+				xCoord2 = 2;
+				break;
+			case 'C':
+				xCoord2 = 3;
+				break;
+			case 'D':
+				xCoord2 = 4;
+				break;
+			case 'E':
+				xCoord2 = 5;
+				break;
+			case 'F':
+				xCoord2 = 6;
+				break;
+			case 'G':
+				xCoord2 = 7;
+				break;
+			case 'H':
+				xCoord2 = 8;
+				break;
+		}
+
+		switch(movTo[4])
+		{
+			case 'A':
+				yCoord2 = 1;
+				break;
+			case 'B':
+				yCoord2 = 2;
+				break;
+			case 'C':
+				yCoord2 = 3;
+				break;
+			case 'D':
+				yCoord2 = 4;
+				break;
+			case 'E':
+				yCoord2 = 5;
+				break;
+			case 'F':
+				yCoord2 = 6;
+				break;
+			case 'G':
+				yCoord2 = 7;
+				break;
+			case 'H':
+				yCoord2 = 8;
+				break;
+		}
+
+		//cin>>xCoord;
+		//cin>>yCoord;
+		//cin>>xCoord2;
+		//cin>>yCoord2;
+		//while()
+		//{
+		//	string mov;
+		//	getline(cin, mov);
+		//	char xCoord = mov[0];
+		//	if(xCoord == 'E')
+		//	{
+		//		xCoord = 5;
+		//	}
+		//	int yCoord = int(mov[1]);
+		move(KING,xCoord,yCoord,xCoord2, yCoord2);
+		//{
+		updateBoard();
 	}
 	///cout<<king.getId()<<endl;
 	return 0;
