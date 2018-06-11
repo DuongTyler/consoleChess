@@ -164,28 +164,28 @@ int main()
 
 		switch(movTo[1])
 		{
-			case 'A':
+			case '1':
 				yCoord = 1;
 				break;
-			case 'B':
+			case '2':
 				yCoord = 2;
 				break;
-			case 'C':
+			case '3':
 				yCoord = 3;
 				break;
-			case 'D':
+			case '4':
 				yCoord = 4;
 				break;
-			case 'E':
+			case '5':
 				yCoord = 5;
 				break;
-			case 'F':
+			case '6':
 				yCoord = 6;
 				break;
-			case 'G':
+			case '7':
 				yCoord = 7;
 				break;
-			case 'H':
+			case '8':
 				yCoord = 8;
 				break;
 		}
@@ -220,32 +220,31 @@ int main()
 
 		switch(movTo[4])
 		{
-			case 'A':
+			case '1':
 				yCoord2 = 1;
 				break;
-			case 'B':
+			case '2':
 				yCoord2 = 2;
 				break;
-			case 'C':
+			case '3':
 				yCoord2 = 3;
 				break;
-			case 'D':
+			case '4':
 				yCoord2 = 4;
 				break;
-			case 'E':
+			case '5':
 				yCoord2 = 5;
 				break;
-			case 'F':
+			case '6':
 				yCoord2 = 6;
 				break;
-			case 'G':
+			case '7':
 				yCoord2 = 7;
 				break;
-			case 'H':
+			case '8':
 				yCoord2 = 8;
 				break;
 		}
-
 		//cin>>xCoord;
 		//cin>>yCoord;
 		//cin>>xCoord2;
@@ -260,8 +259,18 @@ int main()
 		//		xCoord = 5;
 		//	}
 		//	int yCoord = int(mov[1]);
-		move(KING,xCoord,yCoord,xCoord2, yCoord2);
+		char mover;
+		if((king.getPos(0) == xCoord)&&(king.getPos(1) == yCoord)){
+			mover = KING;
+		}
+		if((queen.getPos(0) == xCoord)&&(queen.getPos(1) == yCoord)){
+			mover = QUEEN;
+		}
+		move(mover,xCoord,yCoord,xCoord2,yCoord2);
 		//{
+		cout<<king.getPos(0)<<","<<king.getPos(1)<<endl;
+		cout<<board[xCoord2]<<","<<yCoord2<<endl;
+		cout<<queen.getPos(0)<<","<<queen.getPos(1)<<endl;
 		updateBoard();
 	}
 	///cout<<king.getId()<<endl;
