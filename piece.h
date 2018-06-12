@@ -2,9 +2,10 @@
 using namespace std;
 class piece{
 	public:
-		//int *ident;
-		piece(int nm, bool s, int x = 0, int y = 0)
+		//parameter nm MUST be an interger, use KING or QUEEN from enums
+		piece(int nm, char piece, bool s, int x = 0, int y = 0)
 		{
+			pnm = piece;	//sets the character displayed on board
 			sd = s;		//side
 			tp = nm;	//type of piece
 			updatePos(x,y);
@@ -27,7 +28,16 @@ class piece{
 		{
 			return sd;
 		}
+		void setPiece(char piece)
+		{
+			pnm = piece;
+		}
+		char getPiece()
+		{
+			return pnm;
+		}
 	private:
+		char pnm;
 		int tp;
 		bool sd;
 		int pos[2] = {};
