@@ -91,7 +91,7 @@ int main()
 			case 'F':	xCoord = F;		break;
 			case 'G':	xCoord = G;		break;
 			case 'H':	xCoord = H;		break;
-			default:	throw "invailid input 0";	break;
+			default:	throw 1;		break;
 		}
 
 		switch(movTo[1])
@@ -104,7 +104,7 @@ int main()
 			case '6':	yCoord = 5;		break;
 			case '7':	yCoord = 6;		break;
 			case '8':	yCoord = 7;		break;
-			default:	throw "invailid input 1";	break;
+			default:	throw 2;		break;
 		}
 		
 		switch(movTo[3])
@@ -117,7 +117,7 @@ int main()
 			case 'F':	xCoord2 = F;		break;
 			case 'G':	xCoord2 = G;		break;
 			case 'H':	xCoord2 = H;		break;
-			default:	throw "invailid input 3";	break;
+			default:	throw 3;		break;
 		}
 
 		switch(movTo[4])
@@ -130,10 +130,10 @@ int main()
 			case '6':	yCoord2 = 5;		break;
 			case '7':	yCoord2 = 6;		break;
 			case '8':	yCoord2 = 7;		break;
-			default:	throw "invailid input 4";	break;
+			default:	throw 4;		break;
 		}
 		}
-		catch(string err)
+		catch(int err)
 		{
 			cout<<err<<endl;
 		}
