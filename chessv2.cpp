@@ -4,7 +4,8 @@
 #include "piece.h"
 using namespace std;
 char board [8][8]; 		//64 space visual representation
-piece *positions[8][8];		
+piece *positions[8][8];	
+piece *clearPos[1];
 enum pieceNames{EMPTY = ' ',KING='K',QUEEN='Q',BISHOP='B',KNIGHT='K',ROOK='R',PAWN='P'};
 enum xAlias{A = 0,B = 1,C = 2,D = 3,E = 4,F = 5,G = 6,H = 7};
 
@@ -52,11 +53,13 @@ void move(int x1, int y1, int x2, int y2)
 //	if((x2>=0&&x2<=7)&&(y2>=0&&(y2<=7))&&(positions[x1][y1]!=0 || positions[x1][y1]!= NULL))
 //	{
 //		cout<<"was vailid input"<<endl;
+//		cout<<positions[x1][y1]<<endl;
 		board[x2][y2] = positions[x1][y1]->getPiece();	//sets the character on the board
 		board[x1][y1] = EMPTY;				//clears old board space (visual board)
 		positions[x2][y2] = positions[x1][y1];		//sets new coord from old logical board
 		positions[x1][y1]->updatePos(x2,y2);		//updates values inside piece
-		positions[x1][y1] = 0;
+		positions[x1][y1] = clearPos[0];		//clears the pointer in the original space
+//		cout<<positions[x1][y1]<<endl;
 //	}
 }
 
