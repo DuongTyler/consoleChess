@@ -11,7 +11,7 @@ enum xAlias{A = 0,B = 1,C = 2,D = 3,E = 4,F = 5,G = 6,H = 7};
 
 void updateBoard()
 {
-	cout<<endl;
+	cout<<"\033[0;36mSimple Chess\n\033[0;34mBy Tyler D.\n\033[0;37mGame Format: [A-G][1-8] [A-G][1-8]\033[0;37m"<<endl;
 	int vert = 8;//numbering for the y coordinates on the board
 	for (int ypos = 7; ypos > -1; ypos--)			//row loop
 	{
@@ -49,18 +49,11 @@ void setup()
 
 void move(int x1, int y1, int x2, int y2)
 {
-//	board[x1][y1] = board[x2][y2];
-//	if((x2>=0&&x2<=7)&&(y2>=0&&(y2<=7))&&(positions[x1][y1]!=0 || positions[x1][y1]!= NULL))
-//	{
-//		cout<<"was vailid input"<<endl;
-//		cout<<positions[x1][y1]<<endl;
 		board[x2][y2] = positions[x1][y1]->getPiece();	//sets the character on the board
 		board[x1][y1] = EMPTY;				//clears old board space (visual board)
 		positions[x2][y2] = positions[x1][y1];		//sets new coord from old logical board
 		positions[x1][y1]->updatePos(x2,y2);		//updates values inside piece
 		positions[x1][y1] = clearPos[0];		//clears the pointer in the original space
-//		cout<<positions[x1][y1]<<endl;
-//	}
 }
 
 int main()
@@ -68,36 +61,99 @@ int main()
 	setup();
 	cout<<positions[0][0]<<endl;
 	//Piece Declaration
-	//#KING#
+	//#KING0#
 	piece king(KING,'K',0,D,0);
 	piece *kingPtr = &king;
 	board[D][0] = kingPtr->getPiece();
 	positions[D][0] = kingPtr;
-	//#QUEEN#
+	//#QUEEN0#
 	piece queen(QUEEN,'Q',0,E,0);
 	piece *queenPtr = &queen;
 	board[E][0] = queenPtr->getPiece();
 	positions[E][0] = queenPtr;
-
-	//End Pieces
-/*	cout<<"kingPtr->getPiece() "<<kingPtr->getPiece()<<endl;
-	board[0][0] = kingPtr->getPiece();
-	positions[0][0] = kingPtr;
-	cout<<positions[0][0]->getPos(0)<<positions[0][0]->getPos(1)<<endl;
-	positions[0][0]->updatePos(1,1);
-	cout<<positions[0][0]->getPos(0)<<positions[0][0]->getPos(1)<<endl;
-*/	updateBoard();
+	//#Bishop0-1#
+	piece bishop01(BISHOP,'B',0,C,0);
+	piece *bishop01Ptr = &bishop01;
+	board[C][0] = bishop01Ptr->getPiece();
+	positions[C][0] = bishop01Ptr;
+	//#Bishop0-2#
+	piece bishop02(BISHOP,'B',0,F,0);
+	piece *bishop02Ptr = &bishop02;
+	board[F][0] = bishop02Ptr->getPiece();
+	positions[F][0] = bishop02Ptr;
+	//#Knight0-1#
+	piece knight01(KNIGHT,'N',0,G,0);
+	piece *knight01Ptr = &knight01;
+	board[G][0] = knight01Ptr->getPiece();
+	positions[G][0] = knight01Ptr;
+	//#Knight0-2#
+	piece knight02(KNIGHT,'N',0,B,0);
+	piece *knight02Ptr = &knight02;
+	board[B][0] = knight02Ptr->getPiece();
+	positions[B][0] = knight02Ptr;
+	//#Rook0-1#
+/*	piece rook(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Rook0-2#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-1#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-2#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-3#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-4#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-5#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-6#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-7#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#Pawn0-8#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+*/	//End Pieces
+//	piece king(KING,'K',0,D,0);
+//	piece *kingPtr = &king;
+//	board[D][0] = kingPtr->getPiece();
+//	positions[D][0] = kingPtr;
+	system("./clearScrn.sh");
+	updateBoard();
 	bool valid = false;
-	cout<<"Valid? : "<<valid<<endl;
 	while (1){
 		cout<<"Move: ";
 		string movTo;
-//		while(!valid)
-//		{
 		getline(cin, movTo);
-//		}
 		int xCoord, yCoord, xCoord2, yCoord2;
-//		try{
 		switch(movTo[0])
 		{
 			case 'A':	valid = true; xCoord = A;		break;
@@ -157,24 +213,20 @@ if(valid){
 				valid = false;
 			}
 		}
-//		}
-//		catch(int err)
-//		{
-//			cout<<err<<endl;
-//		}
-//		cout<<xCoord<<","<<yCoord<<"-->"<<xCoord2<<","<<yCoord2<<endl;
-		cout<<"Valid? : "<<valid<<endl;
-		if(valid){
+		system("./clearScrn.sh");
+		if(valid)
+		{
 			move(xCoord, yCoord, xCoord2, yCoord2);
-//			updateBoard();
-			sleep(500);
 			cout<<xCoord<<","<<yCoord<<"-->"<<xCoord2<<","<<yCoord2<<endl;
-		}else{
-			cout<<"NOT A VALID MOVE"<<endl;
 		}
-	updateBoard();
-	valid = false;
-	}
+		updateBoard();
+
+		if(!valid)
+		{
+			cout<<"\033[0;31mNot a Valid Move.\033[0;37m"<<endl;
+		}
+		valid = false;
+		}
 	return 0;
 }
 
