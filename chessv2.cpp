@@ -67,10 +67,19 @@ int main()
 {		//(Piece Type, Side Black, init x(default 0), init y(default 0))
 	setup();
 	cout<<positions[0][0]<<endl;
+	//Piece Declaration
+	//#KING#
 	piece king(KING,'K',0,D,0);
 	piece *kingPtr = &king;
 	board[D][0] = kingPtr->getPiece();
 	positions[D][0] = kingPtr;
+	//#QUEEN#
+	piece queen(QUEEN,'Q',0,E,0);
+	piece *queenPtr = &queen;
+	board[E][0] = queenPtr->getPiece();
+	positions[E][0] = queenPtr;
+
+	//End Pieces
 /*	cout<<"kingPtr->getPiece() "<<kingPtr->getPiece()<<endl;
 	board[0][0] = kingPtr->getPiece();
 	positions[0][0] = kingPtr;
@@ -78,62 +87,75 @@ int main()
 	positions[0][0]->updatePos(1,1);
 	cout<<positions[0][0]->getPos(0)<<positions[0][0]->getPos(1)<<endl;
 */	updateBoard();
-	while (true){
+	bool valid = false;
+	cout<<"Valid? : "<<valid<<endl;
+	while (1){
 		cout<<"Move: ";
 		string movTo;
+//		while(!valid)
+//		{
 		getline(cin, movTo);
+//		}
 		int xCoord, yCoord, xCoord2, yCoord2;
 //		try{
 		switch(movTo[0])
 		{
-			case 'A':	xCoord = A;		break;
-			case 'B':	xCoord = B;		break;
-			case 'C':	xCoord = C;		break;
-			case 'D':	xCoord = D;		break;
-			case 'E':	xCoord = E;		break;
-			case 'F':	xCoord = F;		break;
-			case 'G':	xCoord = G;		break;
-			case 'H':	xCoord = H;		break;
-//			default:	throw 1;		break;
+			case 'A':	valid = true; xCoord = A;		break;
+			case 'B':	valid = true; xCoord = B;		break;
+			case 'C':	valid = true; xCoord = C;		break;
+			case 'D':	valid = true; xCoord = D;		break;
+			case 'E':	valid = true; xCoord = E;		break;
+			case 'F':	valid = true; xCoord = F;		break;
+			case 'G':	valid = true; xCoord = G;		break;
+			case 'H':	valid = true; xCoord = H;		break;
+			default:	valid = false;				break;
 		}
-
+if(valid){
 		switch(movTo[1])
 		{
-			case '1':	yCoord = 0;		break;
-			case '2':	yCoord = 1;		break;
-			case '3':	yCoord = 2;		break;
-			case '4':	yCoord = 3;		break;
-			case '5':	yCoord = 4;		break;
-			case '6':	yCoord = 5;		break;
-			case '7':	yCoord = 6;		break;
-			case '8':	yCoord = 7;		break;
-//			default:	throw 2;		break;
+			case '1':	valid = true; yCoord = 0;		break;
+			case '2':	valid = true; yCoord = 1;		break;
+			case '3':	valid = true; yCoord = 2;		break;
+			case '4':	valid = true; yCoord = 3;		break;
+			case '5':	valid = true; yCoord = 4;		break;
+			case '6':	valid = true; yCoord = 5;		break;
+			case '7':	valid = true; yCoord = 6;		break;
+			case '8':	valid = true; yCoord = 7;		break;
+			default:	valid = false;				break;
 		}
-		
+}if(valid){	
 		switch(movTo[3])
 		{
-			case 'A':	xCoord2 = A;		break;
-			case 'B':	xCoord2 = B;		break;
-			case 'C':	xCoord2 = C;		break;
-			case 'D':	xCoord2 = D;		break;
-			case 'E':	xCoord2 = E;		break;
-			case 'F':	xCoord2 = F;		break;
-			case 'G':	xCoord2 = G;		break;
-			case 'H':	xCoord2 = H;		break;
-//			default:	throw 3;		break;
+			case 'A':	valid = true; xCoord2 = A;		break;
+			case 'B':	valid = true; xCoord2 = B;		break;
+			case 'C':	valid = true; xCoord2 = C;		break;
+			case 'D':	valid = true; xCoord2 = D;		break;
+			case 'E':	valid = true; xCoord2 = E;		break;
+			case 'F':	valid = true; xCoord2 = F;		break;
+			case 'G':	valid = true; xCoord2 = G;		break;
+			case 'H':	valid = true; xCoord2 = H;		break;
+			default:	valid = false;				break;
 		}
-
+}if(valid){
 		switch(movTo[4])
 		{
-			case '1':	yCoord2 = 0;		break;
-			case '2':	yCoord2 = 1;		break;
-			case '3':	yCoord2 = 2;		break;
-			case '4':	yCoord2 = 3;		break;
-			case '5':	yCoord2 = 4;		break;
-			case '6':	yCoord2 = 5;		break;
-			case '7':	yCoord2 = 6;		break;
-			case '8':	yCoord2 = 7;		break;
-//			default:	throw 4;		break;
+			case '1':	valid = true; yCoord2 = 0;		break;
+			case '2':	valid = true; yCoord2 = 1;		break;
+			case '3':	valid = true; yCoord2 = 2;		break;
+			case '4':	valid = true; yCoord2 = 3;		break;
+			case '5':	valid = true; yCoord2 = 4;		break;
+			case '6':	valid = true; yCoord2 = 5;		break;
+			case '7':	valid = true; yCoord2 = 6;		break;
+			case '8':	valid = true; yCoord2 = 7;		break;
+			default:	valid = false;				break;
+		}
+}
+		if(valid)
+		{
+			if(positions[xCoord][yCoord] == clearPos[0]||(xCoord==xCoord2&&yCoord==yCoord2))
+			{
+				valid = false;
+			}
 		}
 //		}
 //		catch(int err)
@@ -141,10 +163,17 @@ int main()
 //			cout<<err<<endl;
 //		}
 //		cout<<xCoord<<","<<yCoord<<"-->"<<xCoord2<<","<<yCoord2<<endl;
-		move(xCoord, yCoord, xCoord2, yCoord2);
-		updateBoard();
-		sleep(1000);
-		cout<<xCoord<<","<<yCoord<<"-->"<<xCoord2<<","<<yCoord2<<endl;
+		cout<<"Valid? : "<<valid<<endl;
+		if(valid){
+			move(xCoord, yCoord, xCoord2, yCoord2);
+//			updateBoard();
+			sleep(500);
+			cout<<xCoord<<","<<yCoord<<"-->"<<xCoord2<<","<<yCoord2<<endl;
+		}else{
+			cout<<"NOT A VALID MOVE"<<endl;
+		}
+	updateBoard();
+	valid = false;
 	}
 	return 0;
 }
