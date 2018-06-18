@@ -217,11 +217,11 @@ if(valid){
 			if(
 					positions[xCoord][yCoord] == clearPos[0]||	//if no piece here, not valid
 					(xCoord==xCoord2&&yCoord==yCoord2)||		//if same coordinate, not valid
-					(positions[xCoord][yCoord]->getSide()==positions[xCoord2][yCoord2]->getSide())	//if on same side, not valid
+					(positions[xCoord2][yCoord2]!=clearPos[0]&&positions[xCoord][yCoord]->getSide()==positions[xCoord2][yCoord2]->getSide())	//if on same side, not valid	positions pointer points to function to return side value
 			){
-				cout<<"caught in big if"<<endl;
+				cout<<"Reached flag 2"<<endl;
 				valid = false;
-				sleep(2000);
+				sleep(500);
 			}
 		}
 		system("./clearScrn.sh");
