@@ -11,7 +11,7 @@ enum xAlias{A = 0,B = 1,C = 2,D = 3,E = 4,F = 5,G = 6,H = 7};
 
 void updateBoard()
 {
-	cout<<"\033[0;36mSimple Chess\n\033[0;34mBy Tyler D.\n\033[0;37mGame Format: [A-G][1-8] [A-G][1-8]\033[0;37m"<<endl;
+	cout<<"\033[0;36mSimple Chess\n\033[0;34mBy Tyler D.\n\033[0;37mGame Format: [A-H][1-8] [A-H][1-8]\033[0;37m"<<endl;
 	int vert = 8;//numbering for the y coordinates on the board
 	for (int ypos = 7; ypos > -1; ypos--)			//row loop
 	{
@@ -61,6 +61,11 @@ int main()
 	setup();
 	cout<<positions[0][0]<<endl;
 	//Piece Declaration
+		//Delcare Pieces by 
+			//piece pieceName(TYPE,Symbol,Side,init xCoord,init yCoord);
+			//piece *piecePtr = &pieceName;
+			//board[init xCoord][init yCoord] = piecePtr->getPiece();
+			//positions[init xCoord][init yCoord] = piecePtr;
 	//#KING0#
 	piece king(KING,'K',0,D,0);
 	piece *kingPtr = &king;
@@ -92,56 +97,56 @@ int main()
 	board[B][0] = knight02Ptr->getPiece();
 	positions[B][0] = knight02Ptr;
 	//#Rook0-1#
-/*	piece rook(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece rook01(ROOK,'R',0,A,0);
+	piece *rook01Ptr = &rook01;
+	board[A][0] = rook01Ptr->getPiece();
+	positions[A][0] = rook01Ptr;
 	//#Rook0-2#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece rook02(ROOK,'R',0,H,0);
+	piece *rook02Ptr = &rook02;
+	board[H][0] = rook02Ptr->getPiece();
+	positions[H][0] = rook02Ptr;
 	//#Pawn0-1#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn01(PAWN,'P',0,A,1);
+	piece *pawn01Ptr = &pawn01;
+	board[A][1] = pawn01Ptr->getPiece();
+	positions[A][1] = pawn01Ptr;
 	//#Pawn0-2#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn02(PAWN,'P',0,B,1);
+	piece *pawn02Ptr = &pawn02;
+	board[B][1] = pawn02Ptr->getPiece();
+	positions[B][1] = pawn02Ptr;
 	//#Pawn0-3#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn03(PAWN,'P',0,C,1);
+	piece *pawn03Ptr = &pawn03;
+	board[C][1] = pawn03Ptr->getPiece();
+	positions[C][1] = pawn03Ptr;
 	//#Pawn0-4#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn04(PAWN,'P',0,D,1);
+	piece *pawn04Ptr = &pawn04;
+	board[D][1] = pawn04Ptr->getPiece();
+	positions[D][1] = pawn04Ptr;
 	//#Pawn0-5#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn05(PAWN,'P',0,E,1);
+	piece *pawn05Ptr = &pawn05;
+	board[E][1] = pawn05Ptr->getPiece();
+	positions[E][1] = pawn05Ptr;
 	//#Pawn0-6#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn06(PAWN,'P',0,F,1);
+	piece *pawn06Ptr = &pawn06;
+	board[F][1] = pawn06Ptr->getPiece();
+	positions[F][1] = pawn06Ptr;
 	//#Pawn0-7#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
+	piece pawn07(PAWN,'P',0,G,1);
+	piece *pawn07Ptr = &pawn07;
+	board[G][1] = pawn07Ptr->getPiece();
+	positions[G][1] = pawn07Ptr;
 	//#Pawn0-8#
-	piece king(KING,'K',0,D,0);
-	piece *kingPtr = &king;
-	board[D][0] = kingPtr->getPiece();
-	positions[D][0] = kingPtr;
-*/	//End Pieces
+	piece pawn08(PAWN,'P',0,H,1);
+	piece *pawn08Ptr = &pawn08;
+	board[H][1] = pawn08Ptr->getPiece();
+	positions[H][1] = pawn08Ptr;
+	//End Pieces
 //	piece king(KING,'K',0,D,0);
 //	piece *kingPtr = &king;
 //	board[D][0] = kingPtr->getPiece();
@@ -208,14 +213,21 @@ if(valid){
 }
 		if(valid)
 		{
-			if(positions[xCoord][yCoord] == clearPos[0]||(xCoord==xCoord2&&yCoord==yCoord2))
-			{
+			cout<<"Reached flag 1"<<endl;
+			if(
+					positions[xCoord][yCoord] == clearPos[0]||	//if no piece here, not valid
+					(xCoord==xCoord2&&yCoord==yCoord2)||		//if same coordinate, not valid
+					(positions[xCoord][yCoord]->getSide()==positions[xCoord2][yCoord2]->getSide())	//if on same side, not valid
+			){
+				cout<<"caught in big if"<<endl;
 				valid = false;
+				sleep(2000);
 			}
 		}
 		system("./clearScrn.sh");
 		if(valid)
 		{
+			cout<<"Moving"<<endl;
 			move(xCoord, yCoord, xCoord2, yCoord2);
 			cout<<xCoord<<","<<yCoord<<"-->"<<xCoord2<<","<<yCoord2<<endl;
 		}
