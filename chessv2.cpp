@@ -4,8 +4,8 @@
 #include "piece.h"
 using namespace std;
 char board [8][8]; 		//64 space visual representation
-piece *positions[8][8];	
-piece *clearPos[1];
+piece *positions[8][8];		//64 space pointer array
+piece *clearPos[1];		//used to check if a space is clear, since I can't seem to get the damn thing to work right otherwise
 enum pieceNames{EMPTY = ' ',KING='K',QUEEN='Q',BISHOP='B',KNIGHT='K',ROOK='R',PAWN='P'};
 enum xAlias{A = 0,B = 1,C = 2,D = 3,E = 4,F = 5,G = 6,H = 7};
 
@@ -147,14 +147,11 @@ int main()
 	board[H][1] = pawn08Ptr->getPiece();
 	positions[H][1] = pawn08Ptr;
 	//End Pieces
-//	piece king(KING,'K',0,D,0);
-//	piece *kingPtr = &king;
-//	board[D][0] = kingPtr->getPiece();
-//	positions[D][0] = kingPtr;
 	system("./clearScrn.sh");
 	updateBoard();
 	bool valid = false;
-	while (1){
+	bool won = false;
+	while (!won){
 		cout<<"Move: ";
 		string movTo;
 		getline(cin, movTo);
@@ -217,7 +214,10 @@ if(valid){
 			if(
 					positions[xCoord][yCoord] == clearPos[0]||	//if no piece here, not valid
 					(xCoord==xCoord2&&yCoord==yCoord2)||		//if same coordinate, not valid
-					(positions[xCoord2][yCoord2]!=clearPos[0]&&positions[xCoord][yCoord]->getSide()==positions[xCoord2][yCoord2]->getSide())	//if on same side, not valid	positions pointer points to function to return side value
+					(positions[xCoord2][yCoord2]!=clearPos[0]
+					 &&
+					 positions[xCoord][yCoord]->getSide()==
+					 positions[xCoord2][yCoord2]->getSide())	//if on same side, not valid	positions pointer points to function to return side value
 			){
 				cout<<"Reached flag 2"<<endl;
 				valid = false;
@@ -240,5 +240,4 @@ if(valid){
 		valid = false;
 		}
 	return 0;
-}
-
+	}
