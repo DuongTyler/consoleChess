@@ -3,7 +3,7 @@ using namespace std;
 class piece{
 	public:
 		//parameter nm MUST be an interger, use KING or QUEEN from enums
-		piece(int nm, char piece, bool s, int x = 0, int y = 0)
+		piece(char nm, char piece, bool s, int x = 0, int y = 0)
 		{
 			pnm = piece;	//sets the character displayed on board
 			sd = s;		//side
@@ -38,7 +38,7 @@ class piece{
 		}
 	private:
 		char pnm;
-		int tp;
+		char tp;
 		bool sd;
 		int pos[2] = {};
 };
