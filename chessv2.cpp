@@ -156,7 +156,7 @@ int main()
 		string movTo;
 		getline(cin, movTo);
 		int xCoord, yCoord, xCoord2, yCoord2;
-		switch(movTo[0])
+		switch(toupper(movTo[0]))
 		{
 			case 'A':	valid = true; xCoord = A;		break;
 			case 'B':	valid = true; xCoord = B;		break;
@@ -182,7 +182,7 @@ if(valid){
 			default:	valid = false;				break;
 		}
 }if(valid){	
-		switch(movTo[3])
+		switch(toupper(movTo[3]))
 		{
 			case 'A':	valid = true; xCoord2 = A;		break;
 			case 'B':	valid = true; xCoord2 = B;		break;
