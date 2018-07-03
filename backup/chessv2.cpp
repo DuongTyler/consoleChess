@@ -67,11 +67,11 @@ int main()
 			//board[init xCoord][init yCoord] = piecePtr->getPiece();
 			//positions[init xCoord][init yCoord] = piecePtr;
 	//#KING0#
-	king king01(KING,'K',0,D,0);
-	piece *king01Ptr = &king01;
-	board[D][0] = king01Ptr->getPiece();
-	positions[D][0] = king01Ptr;
-/*	//#QUEEN0#
+	piece king(KING,'K',0,D,0);
+	piece *kingPtr = &king;
+	board[D][0] = kingPtr->getPiece();
+	positions[D][0] = kingPtr;
+	//#QUEEN0#
 	piece queen(QUEEN,'Q',0,E,0);
 	piece *queenPtr = &queen;
 	board[E][0] = queenPtr->getPiece();
@@ -146,7 +146,7 @@ int main()
 	piece *pawn08Ptr = &pawn08;
 	board[H][1] = pawn08Ptr->getPiece();
 	positions[H][1] = pawn08Ptr;
-*/	//End Pieces
+	//End Pieces
 	system("./clearScrn.sh");
 	updateBoard();
 	bool valid = false;
