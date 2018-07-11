@@ -8,6 +8,7 @@ piece *positions[8][8];		//64 space pointer array
 piece *clearPos[1];		//used to check if a space is clear, since I can't seem to get the damn thing to work right otherwise
 enum pieceNames{EMPTY = ' ',KING='K',QUEEN='Q',BISHOP='B',KNIGHT='K',ROOK='R',PAWN='P'};
 enum xAlias{A = 0,B = 1,C = 2,D = 3,E = 4,F = 5,G = 6,H = 7};
+int redspaces[8][8];
 
 void updateBoard()
 {
