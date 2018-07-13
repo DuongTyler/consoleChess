@@ -30,11 +30,11 @@ class piece{
 		{
 			return sd;
 		}
-		void setPiece(char piece)
+/*		void setPiece(char piece)
 		{
 			pnm = piece;
 		}
-		char getPiece()
+*/		char getPiece()
 		{
 			return pnm;
 		}
@@ -47,11 +47,25 @@ class piece{
 class king : public piece 
 {
 	public:
-		king(char nm, char piece, bool s, int x = 0, int y = 0)
+		king(bool s, int x = 0, int y = 0)
 		{
-			pnm = piece;	//sets the character displayed on board
+			pnm = tp = 'K';	//sets the character displayed on board and type
 			sd = s;		//side
-			tp = nm;	//type of piece
+			updatePos(x,y);
+		//	ident = &identNum;
+		}
+	int getPossibleMove()
+	{
+		return temp;
+	}
+};
+class queen : public piece 
+{
+	public:
+		queen(bool s, int x = 0, int y = 0)
+		{
+			pnm = tp = 'Q';	//sets the character displayed on board and type
+			sd = s;		//side
 			updatePos(x,y);
 		//	ident = &identNum;
 		}

@@ -68,7 +68,7 @@ int main()
 			//board[init xCoord][init yCoord] = piecePtr->getPiece();
 			//positions[init xCoord][init yCoord] = piecePtr;
 	//#KING0#
-	king king01(KING,'K',0,D,0);
+	king king01(0,D,0);
 	piece *king01Ptr = &king01;
 	board[D][0] = king01Ptr->getPiece();
 	positions[D][0] = king01Ptr;
