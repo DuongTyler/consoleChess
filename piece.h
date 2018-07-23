@@ -1,4 +1,5 @@
 #include <string>
+#include <unistd.h>
 using namespace std;
 class piece{
 	public:
@@ -38,7 +39,7 @@ class piece{
 		{
 			return pnm;
 		}
-		int pos[2] = {};
+		int pos[2];
 		bool sd;
 		char pnm;
 		char tp;
@@ -54,10 +55,10 @@ class king : public piece
 			updatePos(x,y);
 		//	ident = &identNum;
 		}
-	int getPossibleMove()
-	{
-		return temp;
-	}
+//	int getPossibleMove()
+//	{
+//		return temp;
+//	}
 };
 class queen : public piece 
 {

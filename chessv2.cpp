@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <stdlib.h>
 #include "piece.h"
 using namespace std;
 char board [8][8]; 		//64 space visual representation
@@ -67,17 +68,32 @@ int main()
 			//piece *piecePtr = &pieceName;
 			//board[init xCoord][init yCoord] = piecePtr->getPiece();
 			//positions[init xCoord][init yCoord] = piecePtr;
+	
+//WHITE
 	//#KING0#
-	king king01(0,D,0);
-	piece *king01Ptr = &king01;
-	board[D][0] = king01Ptr->getPiece();
-	positions[D][0] = king01Ptr;
-/*	//#QUEEN0#
-	piece queen(QUEEN,'Q',0,E,0);
-	piece *queenPtr = &queen;
-	board[E][0] = queenPtr->getPiece();
-	positions[E][0] = queenPtr;
-	//#Bishop0-1#
+	king wking01(0,D,0);
+	piece *wking01Ptr = &wking01;
+	board[D][0] = wking01Ptr->getPiece();
+	positions[D][0] = wking01Ptr;
+	//#QUEEN0#
+	queen wqueen01(0,E,0);
+	piece *wqueen01Ptr = &wqueen01;
+	board[E][0] = wqueen01Ptr->getPiece();
+	positions[E][0] = wqueen01Ptr;
+//BLACK
+	//#KING0#
+	king bking01(1,D,7);
+	piece *bking01Ptr = &bking01;
+	board[D][7] = wking01Ptr->getPiece();
+	positions[D][7] = bking01Ptr;
+	//#QUEEN0#
+	queen bqueen01(1,E,7);
+	piece *bqueen01Ptr = &bqueen01;
+	board[E][7] = bqueen01Ptr->getPiece();
+	positions[E][7] = bqueen01Ptr;
+	
+	
+/*	//#Bishop0-1#
 	piece bishop01(BISHOP,'B',0,C,0);
 	piece *bishop01Ptr = &bishop01;
 	board[C][0] = bishop01Ptr->getPiece();
