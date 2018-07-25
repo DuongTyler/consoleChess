@@ -70,5 +70,16 @@ class queen : public piece
 			updatePos(x,y);
 		//	ident = &identNum;
 		}
+		void mov
+		(
+		int x1,		//used to check first x position to get rid of the old spaces
+		int y1, 	
+		int x2, 	//sets new spaces to red
+		int y2,
+		int board
+		)
+		{
+			
+		}
 };
 
