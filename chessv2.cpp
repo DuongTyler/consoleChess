@@ -10,9 +10,15 @@ piece *clearPos[1];		//used to check if a space is clear, since I can't seem to 
 enum pieceNames{EMPTY = ' ',KING='K',QUEEN='Q',BISHOP='B',KNIGHT='K',ROOK='R',PAWN='P'};
 enum xAlias{A = 0,B = 1,C = 2,D = 3,E = 4,F = 5,G = 6,H = 7};
 int redspaces[8][8];
-int *redboardmem = &redspaces;
+int *redboardmem[8][8];
 void updateBoard()
 {
+	
+	for(int c = 0; c < 8; c++){
+		for( int d = 0; d < 8; d++){
+			redboardmem[c][d] = &redspaces[c][d];
+		}
+	}
 	cout<<"\033[0;36mSimple Chess\n\033[0;34mBy Tyler D.\n\033[0;37mGame Format: [A-H][1-8] [A-H][1-8]\033[0;37m"<<endl;
 	int vert = 8;//numbering for the y coordinates on the board
 	for (int ypos = 7; ypos > -1; ypos--)			//row loop
