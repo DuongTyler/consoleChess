@@ -1,85 +1,42 @@
 #include <string>
 #include <unistd.h>
-using namespace std;
-class piece{
+
+class Piece
+{
+	
 	public:
-		//parameter nm MUST be an interger, use KING or QUEEN from enums
-		piece()
+		Piece(int tp, int x = 0, int y = 0)
 		{
-		}
-		int updatePos(int h = 0, int k = 0)
-		{
-			
-			if(abs(pos[0]-h) != 1&& abs(pos[1]-k) != 1)
+			type = tp;
+			switch (tp)
 			{
-				pos[0] = h;
-				pos[1] = k;
-				return 0;
-			}else{
-				return -1;
+				case 0:		visual = 'K';	break;
+				case 1:		visual = 'Q';	break;
+				case 2:		visual = 'B';	break;
+				case 3:		visual = 'N';	break;
+				case 4:		visual = 'R';	break;
+				default:	visual = 'P';	break;
 			}
 		}
-		int getPos(int p)
+		
+		int [] getCoords()
 		{
-			return pos[p];
+			return {x,y};
 		}
-		char getType()
+		
+		char printPiece()
 		{
-			return tp;
+			return visual;
 		}
-		bool getSide()
-		{
-			return sd;
-		}
-/*		void setPiece(char piece)
-		{
-			pnm = piece;
-		}
-*/		char getPiece()
-		{
-			return pnm;
-		}
-		int pos[2];
-		bool sd;
-		char pnm;
-		char tp;
-};
 
-class king : public piece 
-{
-	public:
-		king(bool s, int x = 0, int y = 0)
+		int getType()
 		{
-			pnm = tp = 'K';	//sets the character displayed on board and type
-			sd = s;		//side
-			updatePos(x,y);
-		//	ident = &identNum;
+			return type;
 		}
-//	int getPossibleMove()
-//	{
-//		return temp;
-//	}
-};
-class queen : public piece 
-{
-	public:
-		queen(bool s, int x = 0, int y = 0)
-		{
-			pnm = tp = 'Q';	//sets the character displayed on board and type
-			sd = s;		//side
-			updatePos(x,y);
-		//	ident = &identNum;
-		}
-		void mov
-		(
-		int x1,		//used to check first x position to get rid of the old spaces
-		int y1, 	
-		int x2, 	//sets new spaces to red
-		int y2,
-		int board
-		)
-		{
-			
-		}
-};
 
+	private:
+		int 	type;
+		char 	visual;
+		int 	x;
+		int 	y;
+};
